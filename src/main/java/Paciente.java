@@ -1,3 +1,4 @@
+
 /**
  * Created by Leandro on 25/6/2016.
  */
@@ -14,7 +15,7 @@ public class Paciente {
     private int juicio;
     private int memoria;
     private int habla;
-
+    //public static final int FIELDS_COUNT = 11;
 
 
     private int orientacionTemporal;
@@ -134,5 +135,25 @@ public class Paciente {
 
     public void setOrientacionTemporal(int orientacionTemporal) {
         this.orientacionTemporal = orientacionTemporal;
+    }
+
+    public static Paciente createPacient(String[] data){
+        int desempeno = getAttributeValue(data,0);
+        int desorientacion = getAttributeValue(data,1);
+        int ubicacion = getAttributeValue(data,2);
+        int comprension = getAttributeValue(data,3);
+        int planificar = getAttributeValue(data,4);
+        int iniciativa = getAttributeValue(data,5);
+        int personalidad = getAttributeValue(data,6);
+        int problemas = getAttributeValue(data,7);
+        int juicio = getAttributeValue(data,8);
+        int memoria = getAttributeValue(data,9);
+        int habla = getAttributeValue(data,10);
+        return new Paciente(desempeno,desorientacion,ubicacion,comprension,planificar,iniciativa,personalidad,
+                    problemas,juicio,memoria,habla);
+    }
+
+    protected static int getAttributeValue(String[] attributes, int position){
+       return position < attributes.length && !(attributes[position].equals("")) && Integer.valueOf(attributes[position]) >= 1 && Integer.valueOf(attributes[position]) <= 5 ? Integer.valueOf(attributes[position]) : 1;
     }
 }

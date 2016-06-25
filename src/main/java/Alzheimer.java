@@ -5,7 +5,6 @@ import com.opencsv.CSVReader;
 
 import java.io.FileReader;
 import java.io.IOException;
-
 public class Alzheimer {
     public static final void main(final String[] args) throws IOException {
         processFile();
@@ -17,7 +16,7 @@ public class Alzheimer {
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             if (nextLine != null) {
-
+                Paciente pac = Paciente.createPacient(nextLine);
                 System.out.print(nextLine);
             }
         }
