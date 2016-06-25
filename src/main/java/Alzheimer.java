@@ -1,16 +1,14 @@
 /**
  * Created by ezequiel on 25/06/16.
  */
+import classes.Paciente;
 import com.opencsv.CSVReader;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class Alzheimer {
     public static final void main(final String[] args) throws IOException {
@@ -29,15 +27,16 @@ public class Alzheimer {
             }
         }
         processPacients(pacients);
+        for( Paciente pacient : pacients) {
+            System.out.print(pacient.getComprension());
+        }
     }
 
     private static void processPacients(ArrayList<Paciente> pacients) {
         KieServices ks = KieServices.Factory.get();
         // From the kie services, a container is created from the classpath
         KieContainer kc = ks.getKieClasspathContainer();
-        KieSession ksession = kc.newKieSession("AlzheimerKS");
-        ksession.setGlobal( "list",
-                new ArrayList<Object>() );
+        KieSession ksession = kc.newKieSession("Alzheimer");
         for( Paciente pacient : pacients) {
             ksession.insert(pacient);
         }

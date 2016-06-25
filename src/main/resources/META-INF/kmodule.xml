@@ -3,6 +3,6 @@
          xmlns="http://www.drools.org/xsd/kmodule">
 
     <kbase packages="org.drools.examples.alzheimer" name="alzheimer">
-        <ksession name="AlzheimerKS"/>
+        <ksession name="Alzheimer"/>
     </kbase>
 </kmodule>
