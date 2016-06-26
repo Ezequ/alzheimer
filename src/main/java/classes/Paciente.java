@@ -8,6 +8,7 @@ public class Paciente {
     public static final int LOW = 1;
     public static final int MEDIUM = 2;
     public static final int HIGH = 3;
+    public static String[] values = {"-","Bajo","Medio","Alto"};
     private int id;
     private int desempeno;
     private int desorientacion;
@@ -137,13 +138,7 @@ public class Paciente {
         this.habla = habla;
     }
 
-    public int getOrientacionTemporal() {
-        return orientacionTemporal;
-    }
 
-    public int getOrientacionEspacial() {
-        return orientacionEspacial;
-    }
 
     public static Paciente createPacient(String[] data) {
         int id = getAttributeValue(data, 0);
@@ -180,4 +175,38 @@ public class Paciente {
     public void setDanosAprendisaje(int danosAprendisaje) {
         this.danosAprendisaje = danosAprendisaje;
     }
+
+    public String getOrientacionTemporal() {
+        return transformValue(orientacionTemporal);
+    }
+
+    public String getOrientacionEspacial() {
+        return transformValue(orientacionEspacial);
+    }
+
+    public String getDanosAprendisaje() {
+        return transformValue(danosAprendisaje);
+    }
+
+    public String getDanosAtencionCalculo() {
+        return transformValue(danosAtencionCalculo);
+    }
+
+    public String getDanosMemoria() {
+        return transformValue(danosMemoria);
+    }
+
+    public String getDanosLenguaje() {
+        return transformValue(danosLenguaje);
+    }
+
+    public boolean isConsulta() {
+        return consulta;
+    }
+
+    public String transformValue(int value) {
+        return values[value];
+    }
+
+
 }
