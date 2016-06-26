@@ -19,3 +19,4 @@ rule "Daños en la orientación temporal 3"
     then
         paciente.setOrientacionTemporal(1);
 end
+

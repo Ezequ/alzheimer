@@ -5,6 +5,10 @@ package classes;
  */
 public class Paciente {
 
+    public static final int LOW = 1;
+    public static final int MEDIUM = 2;
+    public static final int HIGH = 3;
+    private int id;
     private int desempeno;
     private int desorientacion;
     private int ubicacion;
@@ -16,8 +20,6 @@ public class Paciente {
     private int juicio;
     private int memoria;
     private int habla;
-    //public static final int FIELDS_COUNT = 11;
-
 
     private int orientacionTemporal;
     private int orientacionEspacial;
@@ -26,9 +28,11 @@ public class Paciente {
     private int danosMemoria;
     private int danosLenguaje;
 
+
+
     private boolean consulta;
 
-    public Paciente(int desempeno, int desorientacion, int ubicacion, int comprension, int planificar, int iniciativa, int personalidad, int problemas, int juicio, int memoria, int habla) {
+    public Paciente(int desempeno, int desorientacion, int ubicacion, int comprension, int planificar, int iniciativa, int personalidad, int problemas, int juicio, int memoria, int habla, int id) {
         this.desempeno = desempeno;
         this.desorientacion = desorientacion;
         this.ubicacion = ubicacion;
@@ -40,7 +44,10 @@ public class Paciente {
         this.juicio = juicio;
         this.memoria = memoria;
         this.habla = habla;
+        this.id = id;
     }
+
+    public int getId() { return id; }
 
     public int getDesempeno() {
         return desempeno;
@@ -134,27 +141,43 @@ public class Paciente {
         return orientacionTemporal;
     }
 
+    public int getOrientacionEspacial() {
+        return orientacionEspacial;
+    }
+
+    public static Paciente createPacient(String[] data) {
+        int id = getAttributeValue(data, 0);
+        int desempeno = getAttributeValue(data, 1);
+        int desorientacion = getAttributeValue(data, 2);
+        int ubicacion = getAttributeValue(data, 3);
+        int comprension = getAttributeValue(data, 4);
+        int planificar = getAttributeValue(data, 5);
+        int iniciativa = getAttributeValue(data, 6);
+        int personalidad = getAttributeValue(data, 7);
+        int problemas = getAttributeValue(data, 8);
+        int juicio = getAttributeValue(data, 9);
+        int memoria = getAttributeValue(data, 10);
+        int habla = getAttributeValue(data, 11);
+        return new Paciente(desempeno, desorientacion, ubicacion, comprension, planificar, iniciativa, personalidad,
+                problemas, juicio, memoria, habla, id);
+    }
+
+
+    protected static int getAttributeValue(String[] attributes, int position) {
+        return position < attributes.length && !(attributes[position].equals("")) && Integer.valueOf(attributes[position]) >= 1 && Integer.valueOf(attributes[position]) <= 5 ? Integer.valueOf(attributes[position]) : 1;
+    }
+
+    // Setters de atributos finales //
+
     public void setOrientacionTemporal(int orientacionTemporal) {
         this.orientacionTemporal = orientacionTemporal;
     }
 
-    public static Paciente createPacient(String[] data){
-        int desempeno = getAttributeValue(data,0);
-        int desorientacion = getAttributeValue(data,1);
-        int ubicacion = getAttributeValue(data,2);
-        int comprension = getAttributeValue(data,3);
-        int planificar = getAttributeValue(data,4);
-        int iniciativa = getAttributeValue(data,5);
-        int personalidad = getAttributeValue(data,6);
-        int problemas = getAttributeValue(data,7);
-        int juicio = getAttributeValue(data,8);
-        int memoria = getAttributeValue(data,9);
-        int habla = getAttributeValue(data,10);
-        return new Paciente(desempeno,desorientacion,ubicacion,comprension,planificar,iniciativa,personalidad,
-                    problemas,juicio,memoria,habla);
+    public void setOrientacionEspacial(int orientacionEspacial) {
+        this.orientacionEspacial = orientacionEspacial;
     }
 
-    protected static int getAttributeValue(String[] attributes, int position){
-       return position < attributes.length && !(attributes[position].equals("")) && Integer.valueOf(attributes[position]) >= 1 && Integer.valueOf(attributes[position]) <= 5 ? Integer.valueOf(attributes[position]) : 1;
+    public void setDanosAprendisaje(int danosAprendisaje) {
+        this.danosAprendisaje = danosAprendisaje;
     }
 }

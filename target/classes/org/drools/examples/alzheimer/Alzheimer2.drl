@@ -1,0 +1,28 @@
+import classes.Paciente;
+rule "Daños en la orientación espacial 1"
+    when
+        paciente : classes.Paciente(desorientacion >= 3, ubicacion >= 3)
+    then
+        paciente.setOrientacionEspacial(3);
+end
+
+rule "Daños en la orientación espacial 2"
+    when
+        paciente : classes.Paciente(desorientacion >= 3 || ubicacion >= 3, desempeno >= 4)
+    then
+        paciente.setOrientacionEspacial(3);
+end
+
+rule "Daños en la orientación espacial 3"
+    when
+        paciente : classes.Paciente(desorientacion == 3, ubicacion == 3)
+    then
+        paciente.setOrientacionEspacial(2);
+end
+
+rule "Daños en la orientación espacial 4"
+    when
+        paciente : classes.Paciente(desorientacion < 3, ubicacion < 3)
+    then
+        paciente.setOrientacionEspacial(1);
+end

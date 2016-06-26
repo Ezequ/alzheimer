@@ -16,10 +16,12 @@ public class Alzheimer {
     }
 
     public static void processFile() throws IOException {
-        String fileName = "data.csv";
+        String fileName = "data2.csv";
         CSVReader reader = new CSVReader(new FileReader(fileName));
         String[] nextLine;
         ArrayList<Paciente> pacients = new ArrayList<Paciente>();
+        // First line
+        reader.readNext();
         while ((nextLine = reader.readNext()) != null) {
             if (nextLine != null) {
                 Paciente pac = Paciente.createPacient(nextLine);
