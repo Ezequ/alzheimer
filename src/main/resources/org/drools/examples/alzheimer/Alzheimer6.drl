@@ -1,0 +1,28 @@
+import classes.Paciente;
+rule "Daños en el Lenguaje 1"
+    when
+        paciente : classes.Paciente(habla > 3)
+    then
+        paciente.setDanosLenguaje(3);
+end
+
+rule "Daños en  el Lenguaje 2"
+    when
+        paciente : classes.Paciente(habla == 3, memoria > 3)
+    then
+        paciente.setDanosLenguaje(3);
+end
+
+rule "Daños en el Lenguaje 3"
+    when
+        paciente : classes.Paciente(habla == 3, memoria == 3)
+    then
+        paciente.setDanosLenguaje(2);
+end
+
+rule "Daños en el Lenguaje 4"
+    when
+        paciente : classes.Paciente(habla < 3)
+    then
+        paciente.setDanosLenguaje(1);
+end

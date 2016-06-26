@@ -1,0 +1,28 @@
+import classes.Paciente;
+rule "Daños en la Memoria 1"
+    when
+        paciente : classes.Paciente(memoria > 3, juicio > 3)
+    then
+        paciente.setDanosMemoria(3);
+end
+
+rule "Daños en la Memoria 2"
+    when
+        paciente : classes.Paciente(memoria > 3, problemas >3 || desorientacion >3 || desempeno > 3)
+    then
+        paciente.setDanosMemoria(3);
+end
+
+rule "Daños en la Memoria 3"
+    when
+        paciente : classes.Paciente(memoria == 3, problemas >3 || desorientacion >3 || desempeno > 3)
+    then
+        paciente.setDanosMemoria(2);
+end
+
+rule "Daños en la Memoria 4"
+    when
+        paciente : classes.Paciente(memoria < 3)
+    then
+        paciente.setDanosMemoria(1);
+end

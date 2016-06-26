@@ -1,0 +1,28 @@
+import classes.Paciente;
+rule "Daños en el Atencion y Calculo 1"
+    when
+        paciente : classes.Paciente(problemas > 3, comprension > 3)
+    then
+        paciente.setDanosAtencionCalculo(3);
+end
+
+rule "Daños en el Atencion y Calculo 2"
+    when
+        paciente : classes.Paciente(problemas > 3 || comprension > 3, desempeno >=4 || ubicacion >=4 || juicio >=4, iniciativa >=4)
+    then
+        paciente.setDanosAtencionCalculo(3);
+end
+
+rule "Daños en el Atencion y Calculo 3"
+    when
+        paciente : classes.Paciente(problemas == 3 || comprension == 3, desempeno ==3 || ubicacion ==3 || juicio ==3, iniciativa ==3)
+    then
+        paciente.setDanosAtencionCalculo(2);
+end
+
+rule "Daños en el Atencion y Calculo 4"
+    when
+        paciente : classes.Paciente(problemas < 3, comprension < 3)
+    then
+        paciente.setDanosAtencionCalculo(1);
+end

@@ -1,5 +1,9 @@
 package classes;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Created by Leandro on 25/6/2016.
  */
@@ -29,6 +33,9 @@ public class Paciente {
     private int danosMemoria;
     private int danosLenguaje;
 
+    private int nivelesAltos;
+    private int nivelesMedios;
+    private int nivelesBajos;
 
 
     private boolean consulta;
@@ -46,6 +53,9 @@ public class Paciente {
         this.memoria = memoria;
         this.habla = habla;
         this.id = id;
+        this.setNivelesAltos(0);
+        this.setNivelesMedios(0);
+        this.setNivelesBajos(0);
     }
 
     public int getId() { return id; }
@@ -209,4 +219,65 @@ public class Paciente {
     }
 
 
+    public void setDanosAtencionCalculo(int danosAtencionCalculo) {
+        this.danosAtencionCalculo = danosAtencionCalculo;
+    }
+
+    public void setDanosMemoria(int danosMemoria) {
+        this.danosMemoria = danosMemoria;
+    }
+
+    public void setDanosLenguaje(int danosLenguaje) {
+        this.danosLenguaje = danosLenguaje;
+    }
+
+    public void getNiveles(){
+        List<Integer> valores = new ArrayList();
+        valores.add(this.orientacionTemporal);
+        valores.add(this.orientacionEspacial);
+        valores.add(this.danosAprendisaje);
+        valores.add(this.danosAtencionCalculo);
+        valores.add(this.danosMemoria);
+        valores.add(this.danosLenguaje);
+        Iterator it = valores.iterator();
+        while (it.hasNext()){
+            if ((Integer)it.next() == 3){
+                this.setNivelesAltos(this.getNivelesAltos() + 1);
+            }
+            if ((Integer)it.next() == 2){
+                this.setNivelesMedios(this.getNivelesMedios() + 1);
+            }
+            if ((Integer)it.next() == 1){
+                this.setNivelesBajos(this.getNivelesBajos() + 1);
+            }
+        }
+    }
+
+    public void setConsulta(boolean consulta) {
+        this.consulta = consulta;
+    }
+
+    public int getNivelesAltos() {
+        return nivelesAltos;
+    }
+
+    public void setNivelesAltos(int nivelesAltos) {
+        this.nivelesAltos = nivelesAltos;
+    }
+
+    public int getNivelesMedios() {
+        return nivelesMedios;
+    }
+
+    public void setNivelesMedios(int nivelesMedios) {
+        this.nivelesMedios = nivelesMedios;
+    }
+
+    public int getNivelesBajos() {
+        return nivelesBajos;
+    }
+
+    public void setNivelesBajos(int nivelesBajos) {
+        this.nivelesBajos = nivelesBajos;
+    }
 }

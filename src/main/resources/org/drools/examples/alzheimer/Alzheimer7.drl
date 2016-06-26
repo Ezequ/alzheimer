@@ -1,0 +1,26 @@
+import classes.Paciente;
+
+rule "Visita 1"
+    when
+        paciente : classes.Paciente(nivelesAltos >= 2)
+    then
+        paciente.setConsulta(true);
+end
+rule "Visita 2"
+    when
+        paciente : classes.Paciente(nivelesAltos == 1, nivelesMedios >=2)
+    then
+        paciente.setConsulta(true);
+end
+rule "Visita 3"
+    when
+        paciente : classes.Paciente(nivelesMedios >=4)
+    then
+        paciente.setConsulta(true);
+end
+rule "Visita 4"
+    when
+        paciente : classes.Paciente(nivelesAltos == 0, nivelesMedios <=3)
+    then
+        paciente.setConsulta(false);
+end
