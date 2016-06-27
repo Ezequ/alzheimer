@@ -5,4 +5,8 @@
     <kbase packages="org.drools.examples.alzheimer" name="alzheimer">
         <ksession name="Alzheimer"/>
     </kbase>
+
+    <kbase packages="org.drools.examples.alzheimer-results" name="alzheimer-result">
+        <ksession name="Alzheimer-result"/>
+    </kbase>
 </kmodule>

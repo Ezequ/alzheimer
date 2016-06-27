@@ -233,26 +233,27 @@ public class Paciente {
 
     public void getNiveles(){
         if (this.nivelesAltos==0 && this.nivelesMedios ==0 && this.nivelesBajos==0){
-        List<Integer> valores = new ArrayList();
-        valores.add(this.orientacionTemporal);
-        valores.add(this.orientacionEspacial);
-        valores.add(this.danosAprendisaje);
-        valores.add(this.danosAtencionCalculo);
-        valores.add(this.danosMemoria);
-        valores.add(this.danosLenguaje);
-        Iterator it = valores.iterator();
-        while (it.hasNext()){
-            int valor =  (Integer)it.next();
-            if (valor == 3){
-                this.nivelesAltos++;
+            List<Integer> valores = new ArrayList();
+            valores.add(this.orientacionTemporal);
+            valores.add(this.orientacionEspacial);
+            valores.add(this.danosAprendisaje);
+            valores.add(this.danosAtencionCalculo);
+            valores.add(this.danosMemoria);
+            valores.add(this.danosLenguaje);
+            Iterator it = valores.iterator();
+            while (it.hasNext()){
+                int valor =  (Integer)it.next();
+                if (valor == 3){
+                    this.nivelesAltos++;
+                }
+                if (valor == 2){
+                    this.nivelesMedios++;
+                }
+                if (valor == 1){
+                    this.nivelesBajos++;
+                }
             }
-            if (valor == 2){
-                this.nivelesMedios++;
-            }
-            if ((Integer)it.next() == 1){
-                this.nivelesBajos++;
-            }
-        }}
+        }
     }
 
     public void setConsulta(boolean consulta) {
