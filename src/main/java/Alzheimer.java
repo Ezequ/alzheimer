@@ -20,6 +20,7 @@ public class Alzheimer {
         String filenameToWrite = "data2-results.csv";
         ArrayList<Paciente> pacients = getPacientsFromFile(filenameToRead);
         processPacients(pacients);
+        processResults(pacients);
         writePacientsResult(filenameToWrite,pacients);
     }
 
@@ -44,6 +45,18 @@ public class Alzheimer {
         // From the kie services, a container is created from the classpath
         KieContainer kc = ks.getKieClasspathContainer();
         KieSession ksession = kc.newKieSession("Alzheimer");
+        for( Paciente pacient : pacients) {
+            ksession.insert(pacient);
+        }
+        ksession.fireAllRules();
+        ksession.dispose();
+    }
+
+    private static void processResults(ArrayList<Paciente> pacients) {
+        KieServices ks = KieServices.Factory.get();
+        // From the kie services, a container is created from the classpath
+        KieContainer kc = ks.getKieClasspathContainer();
+        KieSession ksession = kc.newKieSession("Alzheimer-result");
         for( Paciente pacient : pacients) {
             ksession.insert(pacient);
         }

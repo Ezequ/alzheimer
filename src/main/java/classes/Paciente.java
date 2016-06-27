@@ -53,9 +53,9 @@ public class Paciente {
         this.memoria = memoria;
         this.habla = habla;
         this.id = id;
-        this.setNivelesAltos(0);
-        this.setNivelesMedios(0);
-        this.setNivelesBajos(0);
+        this.nivelesBajos=0;
+        this.nivelesMedios=0;
+        this.nivelesAltos=0;
     }
 
     public int getId() { return id; }
@@ -232,6 +232,7 @@ public class Paciente {
     }
 
     public void getNiveles(){
+        if (this.nivelesAltos==0 && this.nivelesMedios ==0 && this.nivelesBajos==0){
         List<Integer> valores = new ArrayList();
         valores.add(this.orientacionTemporal);
         valores.add(this.orientacionEspacial);
@@ -241,16 +242,17 @@ public class Paciente {
         valores.add(this.danosLenguaje);
         Iterator it = valores.iterator();
         while (it.hasNext()){
-            if ((Integer)it.next() == 3){
-                this.setNivelesAltos(this.getNivelesAltos() + 1);
+            int valor =  (Integer)it.next();
+            if (valor == 3){
+                this.nivelesAltos++;
             }
-            if ((Integer)it.next() == 2){
-                this.setNivelesMedios(this.getNivelesMedios() + 1);
+            if (valor == 2){
+                this.nivelesMedios++;
             }
             if ((Integer)it.next() == 1){
-                this.setNivelesBajos(this.getNivelesBajos() + 1);
+                this.nivelesBajos++;
             }
-        }
+        }}
     }
 
     public void setConsulta(boolean consulta) {
@@ -258,6 +260,7 @@ public class Paciente {
     }
 
     public int getNivelesAltos() {
+        this.getNiveles();
         return nivelesAltos;
     }
 
@@ -266,6 +269,7 @@ public class Paciente {
     }
 
     public int getNivelesMedios() {
+        this.getNiveles();
         return nivelesMedios;
     }
 
@@ -274,6 +278,7 @@ public class Paciente {
     }
 
     public int getNivelesBajos() {
+        this.getNiveles();
         return nivelesBajos;
     }
 
